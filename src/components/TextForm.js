@@ -3,7 +3,15 @@ import PropTypes from 'prop-types'
 
 
 export default function TextForm(props) {
-
+    const handleCopy=()=>{
+        let text=document.getElementById("myBox");
+        text.select()
+        navigator.clipboard.writeText(text.value)
+    }
+    const handleExtraspace =()=>{
+        let newText=Text.split(/[ ]+/);
+        setText(newText.join(" "));
+    }
     const handleUpClick = ()=>{
         // console.log("upper case ws clicked" + Text)
         let newtext =Text.toUpperCase();
@@ -40,6 +48,8 @@ export default function TextForm(props) {
                 <button className='btn btn-primary mx-2' onClick={handleUpClick}>Convert to Uppercase</button>
                 <button className='btn btn-primary mx-2' onClick={handlelowClick}>Convert to Lowercase</button>
                 <button className='btn btn-primary mx-2' onClick={handleclearClick}>Clear text</button>
+                <button className='btn btn-primary mx-2' onClick={handleCopy}>Copy text</button>
+                <button className='btn btn-primary mx-2' onClick={handleExtraspace}>Clear extra space</button>
         </div>
         <div className="container my-2">
                 <h1>Your Text Summary</h1>
